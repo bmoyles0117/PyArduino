@@ -46,10 +46,10 @@ class ArduinoApp(object):
     ANALOG_READ     = 4
     ANALOG_WRITE    = 5
 
-    def __init__(self, endpoint, baudrate = DEFAULT_BAUDRATE):
+    def __init__(self, endpoint, baudrate = DEFAULT_BAUDRATE, sleep_delay = 2):
         self.endpoint = endpoint
         self.baudrate = baudrate
-        self.last_send = None
+        self.sleep_delay = sleep_delay
 
         self.connect()
 
@@ -72,7 +72,9 @@ class ArduinoApp(object):
     def create_connection(self, endpoint, baudrate):
         conn = serial.Serial(endpoint, baudrate)
         conn.setTimeout(0.1)
-        conn.setWriteTimeout(0.1)
+        conn.setWriteTimeout(2)
+
+        time.sleep(self.sleep_delay)
 
         return conn
 
@@ -105,8 +107,6 @@ class ArduinoApp(object):
 
     @ensure_connection
     def send(self, *args):
-        self.last_send = args
-
         command_str = ','.join(map(str, args))
 
         # print '%s:%s' % (len(command_str), command_str, )
