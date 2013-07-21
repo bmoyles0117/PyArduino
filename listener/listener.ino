@@ -3,12 +3,11 @@ String serial_msg = "";
 char serial_chars[100];
 char serial_char = ' ';
 
-
-const int DIGITAL_READ = 1;
-const int DIGITAL_WRITE = 2;
-const int PIN_MODE = 3;
-const int ANALOG_READ = 4;
-const int ANALOG_WRITE = 5;
+#define DIGITAL_READ 1
+#define DIGITAL_WRITE 2
+#define PIN_MODE 3
+#define ANALOG_READ 4
+#define ANALOG_WRITE 5
 
 void setup() {
   Serial.begin(9600);
