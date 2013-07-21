@@ -4,9 +4,6 @@ from arduino import *
 PIN = 11
 
 class FadeApp(BeginnersArduinoApp):
-    def setup(self):
-        self.pinMode(PIN, OUTPUT)
-
     def loop(self):
         self.fadePin(PIN, 0, 255, 1000)
         self.delay(1000)

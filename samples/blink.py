@@ -4,9 +4,6 @@ from arduino import *
 PIN = 11
 
 class BlinkApp(BeginnersArduinoApp):
-    def setup(self):
-        self.pinMode(PIN, OUTPUT)
-
     def loop(self):
         self.turnPinOn(PIN)
         self.delay(1000)

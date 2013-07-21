@@ -4,9 +4,6 @@ from arduino import *
 PIN = 11
 
 class DigitalReadApp(BeginnersArduinoApp):
-    def setup(self):
-        self.pinMode(PIN, OUTPUT)
-
     def loop(self):
         self.turnPinOn(PIN)
 

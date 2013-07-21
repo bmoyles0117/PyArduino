@@ -122,6 +122,10 @@ class BeginnersArduinoApp(ArduinoApp):
 
         return super(BeginnersArduinoApp, self).__init__(*args, **kwargs)
 
+    def setup(self):
+        pass
+
+    @ensure_pin_mode(OUTPUT)
     def fadePin(self, pin, from_, to, duration):
         delay_duration = duration * 1.0 / abs(to - from_) * 10
 
@@ -132,9 +136,11 @@ class BeginnersArduinoApp(ArduinoApp):
         # Ensure that the brightness makes it to the final point
         self.analogWrite(pin, to)
 
+    @ensure_pin_mode(INPUT)
     def isPinOff(self, pin):
         return self.digitalRead(pin) == LOW
 
+    @ensure_pin_mode(INPUT)
     def isPinOn(self, pin):
         return self.digitalRead(pin) == HIGH
 
@@ -147,6 +153,6 @@ class BeginnersArduinoApp(ArduinoApp):
     def turnPinOn(self, pin):
         self.digitalWrite(pin, HIGH)
 
-    @ensure_pin_mode(INPUT)
+    @ensure_pin_mode(OUTPUT)
     def turnPinOff(self, pin):
         self.digitalWrite(pin, LOW)
