@@ -120,7 +120,7 @@ class BeginnersArduinoApp(ArduinoApp):
     def __init__(self, *args, **kwargs):
         self.pins = {}
 
-        return super(BeginnersArduinoApp, self).__init__(*args, **kwargs)
+        super(BeginnersArduinoApp, self).__init__(*args, **kwargs)
 
     def setup(self):
         pass
